@@ -24,21 +24,21 @@ void Enigma::Encode(){
                 int offset_reverse;
                 char reverse;
 
-                for(int i =0; i < _numRotor; i++){
+                for(int i =_numRotor-1; i >=0; i--){
                     
-                    if(i == 0){
+                    if(i == _numRotor - 1){
                       offset_reverse = offsetReverse(reflected, _key.at(i));
                     }
                     else {
                      offset_reverse = offsetReverse(reverse, _key.at(i));
 
                     }
-                    char reverse = (char)(65+offset_reverse); // reverse connexion
+                    reverse = (char)(65+offset_reverse); // reverse connexion
                 }
                 
 
                 _cipher.push_back(reverse);
-                _offset.at(0) = (_offset.at(0) + 1);
+                _offset.at(0) = _offset.at(0) + 1;
 
                 for(int i = 1; i < _numRotor; i++){
                     if(_offset.at(i-1) == 27){
@@ -53,12 +53,13 @@ void Enigma::Encode(){
 void Enigma::Decode(){
     //TODO
 }   
-Enigma::Enigma(std::string key){
-    if(key.length() != 26){
+Enigma::Enigma(std::string rotor1, std::string rotor2){
+    if(rotor1.length() != 26 || rotor2.length() != 26){
         throw std::runtime_error("not the right key lenght");
     }
     else {
-        _key.push_back(key);
+        _key.push_back(rotor1);
+        _key.push_back(rotor2);
 
     }
     _offset.resize(_numRotor); // one rotor

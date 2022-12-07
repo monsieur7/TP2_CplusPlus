@@ -8,14 +8,14 @@ class Enigma : public Encrypt {
         std::vector<int> _offset;
         std::string _reflector = "ZYXWVUTSRQPONMLKJIHGFEDCBA";
         int offsetReverse(char c, std::string key);
-        int _numRotor = 1;
+        int _numRotor = 2;
     public:
-        Enigma(std::string key); // only one rotor
+        Enigma(std::string rotor1, std::string rotor2); // only one rotor
         void Encode();
         void Decode();
         std::string getCipher(); // FOR DEBUG
         void setPlain(std::string plain);
-        void reset();
+        void reset(); // reset offset at 0
         void setOffset(std::vector<int> offset);
 
         void swap() {

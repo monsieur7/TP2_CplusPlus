@@ -4,6 +4,6 @@ int main(int argc, char ** argv){
     Enigma e1("DMTWSILRUYQNKFEJCAZBPGXOHV");
     e1.setPlain("A");
     e1.Encode();
-    std::cout << "result " << e1.getCipher();
+    std::cout << "result: " << e1.getCipher() << "\n";
     return 0;
 }

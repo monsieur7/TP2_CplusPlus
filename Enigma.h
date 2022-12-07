@@ -1,13 +1,16 @@
 #pragma once
 #include "Encrypt.h"
-#inclde <vector>
+#include <vector>
 class Enigma : public Encrypt {
 
     private:
-        std::vector<std::string> key; // one rotor but a vector for later
+        std::vector<std::string> _key; // one rotor but a vector for later
+        std::vector<int> _offset;
     public:
         Enigma(std::string key); // only one rotor
-        void Encrypt() override;
-        void Decryp() override;
+        void Encode() ;
+        void Decode() ;
+        std::string getCipher(); // FOR DEBUG
+        void setPlain(std::string plain);
         
-}
+};

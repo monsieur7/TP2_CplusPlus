@@ -8,7 +8,7 @@ class Enigma : public Encrypt {
         std::vector<int> _offset;
         std::string _reflector = "ZYXWVUTSRQPONMLKJIHGFEDCBA";
         int offsetReverse(char c, std::string key);
-        int numRotor;
+        int _numRotor = 1;
     public:
         Enigma(std::string key); // only one rotor
         void Encode();

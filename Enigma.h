@@ -8,8 +8,8 @@ class Enigma : public Encrypt {
         std::vector<int> _offset;
     public:
         Enigma(std::string key); // only one rotor
-        void Encode() ;
-        void Decode() ;
+        void Encode();
+        void Decode();
         std::string getCipher(); // FOR DEBUG
         void setPlain(std::string plain);
         

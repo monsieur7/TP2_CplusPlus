@@ -1,5 +1,5 @@
 #include "Enigma.h"
-
+#include <iostream>
 void Enigma::Encode(){
     _cipher = "";
     for(char c : _plain){
@@ -9,8 +9,7 @@ void Enigma::Encode(){
             }
             else {
                 int local_offset = (c - 65 + _offset.at(i)) % 26; // everything in MAJ
-                int new_offset = _key.at(i)[local_offset];
-                char new_char = (char) (new_offset+65);
+                char new_char = _key.at(i)[local_offset];
                 _cipher.push_back(new_char);
                 _offset.at(i) = (_offset.at(i) + 1)%27;
             }
@@ -18,7 +17,9 @@ void Enigma::Encode(){
             
     }
 }
-    
+void Enigma::Decode(){
+    //TODO
+}   
 Enigma::Enigma(std::string key){
     if(key.length() != 26){
         throw std::runtime_error("not the right key lenght");
@@ -28,7 +29,9 @@ Enigma::Enigma(std::string key){
 
     }
     _offset.resize(1); // one rotor
-    _offset.clear(); // set it at 0 if not already done 
+    for(int i = 0; i < 1; i++){
+        _offset.at(i) = 0;
+    }
 }
 
 

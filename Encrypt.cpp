@@ -9,7 +9,7 @@ void Encrypt::read(std::string file){
 
 void Encrypt::write(std::string file){
     _file.open(file, std::ios::out);
-    _file << _cipher; // writing entire stringx
+    _file << _cipher; // writing entire string
 }
 
 

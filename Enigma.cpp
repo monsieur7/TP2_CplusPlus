@@ -61,8 +61,8 @@ Enigma::Enigma(std::string key){
         _key.push_back(key);
 
     }
-    _offset.resize(1); // one rotor
-    for(int i = 0; i < 1; i++){
+    _offset.resize(_numRotor); // one rotor
+    for(int i = 0; i < _numRotor; i++){
         _offset.at(i) = 0;
     }
 }
@@ -83,4 +83,10 @@ int Enigma::offsetReverse(char c, std::string key){
         }
     }
     return 0; // ERROR TODO
+}
+
+void Enigma::reset(){
+    for(int i = 0; i < _numRotor; i++){
+        _offset.at(i) = 0;
+    }
 }

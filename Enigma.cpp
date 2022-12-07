@@ -10,7 +10,10 @@ void Enigma::Encode(){
             else {
                 int local_offset = (c - 65 + _offset.at(i)) % 26; // everything in MAJ
                 char new_char = _key.at(i)[local_offset];
-                _cipher.push_back(new_char);
+                char reflected = _reflector.at((int)new_char - 65);
+                int offet_reverse = offsetReverse(reflected, _key.at(i));
+                char reverse = (char)(65+offet_reverse); // reverse connexion 
+                _cipher.push_back(reverse);
                 _offset.at(i) = (_offset.at(i) + 1)%27;
             }
         }
@@ -41,4 +44,13 @@ std::string Enigma::getCipher(){
 
 void Enigma::setPlain(std::string plain){
     _plain = plain;
+}
+
+int Enigma::offsetReverse(char c, std::string key){
+    for(int i = 0; i < 26; i++){
+        if(key.at(i) == c){
+            return i;
+        }
+    }
+    return 0; // ERROR TODO
 }

@@ -14,8 +14,6 @@ class Enigma : public Encrypt {
         Enigma(std::string rotor1, std::string rotor2,  std::string rotor3); // only one rotor
         void Encode();
         void Decode();
-        std::string& getCipher(); // FOR DEBUG
-        std::string& getPlain();
         void setPlain(std::string plain);
         void reset(); // reset offset at 0
         void setOffset(std::vector<int> offset);

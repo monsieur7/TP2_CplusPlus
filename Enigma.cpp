@@ -135,12 +135,7 @@ Enigma::Enigma(std::string rotor1, std::string rotor2,  std::string rotor3){
 }
 
 
-std::string& Enigma::getCipher(){
-    return _cipher;
-} // FOR DEBUG
-std::string& Enigma::getPlain(){
-    return _plain;
-}
+
 void Enigma::setPlain(std::string plain){
     _plain = plain;
 }
